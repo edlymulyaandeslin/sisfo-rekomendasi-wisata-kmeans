@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\User;
 use Inertia\Inertia;
+use App\Models\Wisata;
+use App\Models\Cluster;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WisataController;
@@ -12,7 +15,15 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
+        $totalUser = User::count();
+        $totalWisata = Wisata::count();
+        $totalCluster = Cluster::count();
+
+        return Inertia::render('dashboard', [
+            'totalUser' => $totalUser,
+            'totalWisata' => $totalWisata,
+            'totalCluster' => $totalCluster,
+        ]);
     })->name('dashboard');
 
     Route::resource('users', UserController::class);
