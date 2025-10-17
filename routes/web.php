@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WisataController;
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -14,6 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::resource('users', UserController::class);
+    Route::resource('wisatas', WisataController::class);
 });
 
 require __DIR__ . '/settings.php';

@@ -19,5 +19,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'super@gmail.com',
             'role' => User::ROLE_ADMIN
         ]);
+
+        $this->call([
+            WisataSeeder::class,
+            ClusterSeeder::class
+        ]);
     }
 }
