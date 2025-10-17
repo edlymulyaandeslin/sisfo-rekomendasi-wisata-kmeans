@@ -14,9 +14,9 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Edit({ wisata }: { wisata: Wisata }) {
     const { data, setData, processing, put, errors } = useForm({
         nama_wisata: wisata.nama_wisata || '',
-        rating: wisata.rating || '',
-        ulasan: wisata.ulasan || '',
-        jumlah_fasilitas: wisata.jumlah_fasilitas || '',
+        rating: Number(wisata.rating).toFixed(1) || '',
+        ulasan: wisata.ulasan || 0,
+        jumlah_fasilitas: wisata.jumlah_fasilitas || 0,
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -69,7 +69,7 @@ export default function Edit({ wisata }: { wisata: Wisata }) {
                             id="ulasan"
                             type="number"
                             value={data.ulasan}
-                            onChange={(e) => setData('ulasan', e.target.value)}
+                            onChange={(e) => setData('ulasan', Number(e.target.value))}
                             placeholder="Ex: 1020"
                         />
                         {errors.ulasan && <p className="mt-1 text-sm text-red-500">{errors.ulasan}</p>}
@@ -82,7 +82,7 @@ export default function Edit({ wisata }: { wisata: Wisata }) {
                             id="jumlah_fasilitas"
                             type="number"
                             value={data.jumlah_fasilitas}
-                            onChange={(e) => setData('jumlah_fasilitas', e.target.value)}
+                            onChange={(e) => setData('jumlah_fasilitas', Number(e.target.value))}
                             placeholder="Ex: 4"
                         />
                         {errors.jumlah_fasilitas && <p className="mt-1 text-sm text-red-500">{errors.jumlah_fasilitas}</p>}

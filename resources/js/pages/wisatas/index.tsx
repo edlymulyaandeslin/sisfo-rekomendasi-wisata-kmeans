@@ -92,7 +92,7 @@ export default function Index({ wisatas }: { wisatas: PaginatedData<Wisata> }) {
                             render: (wisata) => (
                                 <span className="flex items-center gap-1 text-sm font-medium">
                                     <Star className="text-yellow-400" fill="currentColor" />
-                                    {wisata.rating}
+                                    {Number(wisata.rating).toFixed(1)}
                                 </span>
                             ),
                         },
@@ -153,7 +153,7 @@ export default function Index({ wisatas }: { wisatas: PaginatedData<Wisata> }) {
                                 <span className="text-xs text-gray-500 dark:text-gray-400">Rating</span>
                                 <span className="flex gap-1 text-base font-semibold">
                                     <Star className="text-yellow-400" fill="currentColor" />
-                                    {selectedWisata.rating}
+                                    {Number(selectedWisata.rating).toFixed(1)}
                                 </span>
                             </div>
                             <div className="flex flex-col">
