@@ -14,5 +14,5 @@ export const formatDateToHumanReadable = (date: string): string => {
 
 export const roles = [
     { value: 'admin', label: 'Admin' },
-    { value: 'user', label: 'User' },
+    // { value: 'user', label: 'User' },
 ];

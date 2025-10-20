@@ -44,5 +44,5 @@ class User extends Authenticatable
 
     // Role
     public const ROLE_ADMIN = 'admin';
-    public const ROLE_USER = 'user';
+    // public const ROLE_USER = 'user';
 }
