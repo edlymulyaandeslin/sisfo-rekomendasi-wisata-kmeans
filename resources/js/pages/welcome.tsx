@@ -37,7 +37,7 @@ export default function Welcome() {
                     <div className="mx-auto max-w-3xl text-center">
                         <h2 className="mb-4 text-3xl leading-tight font-bold md:text-5xl">
                             Sistem Informasi <br />
-                            <span className="text-blue-600">Rekomendasi Wisata Riau</span>
+                            <span className="text-blue-600">Rekomendasi Wisata di Riau</span>
                         </h2>
                         <p className="mb-8 text-base text-gray-600 md:text-lg dark:text-gray-300">
                             Platform berbasis web yang membantu pengguna menemukan destinasi wisata terbaik di Provinsi Riau. Sistem ini menggunakan

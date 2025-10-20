@@ -6,6 +6,7 @@ use App\Models\Wisata;
 use App\Models\Cluster;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KmeansController;
 use App\Http\Controllers\WisataController;
 use App\Http\Controllers\ClusterController;
 
@@ -29,7 +30,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('wisatas', WisataController::class);
     Route::resource('clusters', ClusterController::class);
-    Route::resource('kmeans', WisataController::class);
+    Route::get('kmeans', [KmeansController::class, 'index'])->name('kmeans.index');
+    Route::post('kmeans', [KmeansController::class, 'store'])->name('kmeans.store');
+    Route::delete('kmeans', [KmeansController::class, 'destroy'])->name('kmeans.destroy');
 });
 
 require __DIR__ . '/settings.php';

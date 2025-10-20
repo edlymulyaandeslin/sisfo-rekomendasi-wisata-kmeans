@@ -85,12 +85,13 @@ export interface Cluster {
 export interface IterasiCluster {
     id: number;
     wisata_id: number;
+    cluster_id: number;
     jarak_c1: number;
     jarak_c2: number;
     jarak_c3: number;
-    cluster: number;
     jumlah_iterasi: number;
     wisata: Wisata;
+    cluster: Cluster;
     created_at: string;
     updated_at: string;
 }
