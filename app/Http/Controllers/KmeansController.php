@@ -144,8 +144,8 @@ class KmeansController extends Controller
         $list_wisata = Wisata::latest()->get();
 
         //  Mengambil Centroid awal
-        $centroid_awal = $list_wisata->random(3)->toArray(); // random centroid
-        // $centroid_awal = Wisata::whereIn('id', [3, 11, 19])->get()->toArray(); // example centroid di excel
+        // $centroid_awal = $list_wisata->random(3)->toArray(); // random centroid
+        $centroid_awal = Wisata::whereIn('id', [3, 11, 19])->get()->toArray(); // example centroid di excel
 
         // K means Iterasi
         $latest_centroid = $centroid_awal;
