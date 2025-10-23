@@ -1,6 +1,6 @@
 import AppLayout from '@/layouts/app-layout';
-import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/react';
+import { SharedData, type BreadcrumbItem } from '@/types';
+import { Head, usePage } from '@inertiajs/react';
 import { Boxes, TramFront, Users } from 'lucide-react';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -17,6 +17,8 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ totalUser, totalWisata, totalCluster }: DashboardProps) {
+    const { auth } = usePage<SharedData>().props;
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
@@ -26,15 +28,17 @@ export default function Dashboard({ totalUser, totalWisata, totalCluster }: Dash
 
                 {/* Cards */}
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    <div className="flex items-center gap-4 rounded-xl border bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
-                            <Users className="h-6 w-6" />
+                    {auth.user?.role === 'admin' && (
+                        <div className="flex items-center gap-4 rounded-xl border bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
+                            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
+                                <Users className="h-6 w-6" />
+                            </div>
+                            <div>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">Total Users</p>
+                                <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{totalUser}</p>
+                            </div>
                         </div>
-                        <div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Total Users</p>
-                            <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{totalUser}</p>
-                        </div>
-                    </div>
+                    )}
 
                     <div className="flex items-center gap-4 rounded-xl border bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-900">
                         <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300">
