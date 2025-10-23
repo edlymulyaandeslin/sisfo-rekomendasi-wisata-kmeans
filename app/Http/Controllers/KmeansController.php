@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Wisata;
 use App\Models\Cluster;
-use App\Models\IterasiCluster;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules\Exists;
+use App\Models\IterasiCluster;
+use Illuminate\Support\Facades\Auth;
 
 class KmeansController extends Controller
 {
@@ -18,7 +18,10 @@ class KmeansController extends Controller
     {
         $clusters = Cluster::latest()->get();
 
-        $clustering_data = IterasiCluster::with(['wisata', 'cluster'])->latest()->get();
+        $clustering_data = IterasiCluster::with(['wisata', 'cluster'])
+            ->where('user_id', Auth::user()->id)
+            ->latest()
+            ->get();
         return Inertia::render('kmeans/index', [
             'clusters' => $clusters,
             'clustering_data' => $clustering_data,
@@ -159,8 +162,11 @@ class KmeansController extends Controller
 
                 $insertData = [];
 
+                $userId = Auth::user()->id;
+
                 foreach ($iterasi as $data) {
                     $insertData[] = [
+                        "user_id" => $userId,
                         "wisata_id" => $data['wisata_id'],
                         "cluster_id" => $data['cluster_id'],
                         "jarak_c1" => $data['jarak_c1'],
@@ -187,7 +193,8 @@ class KmeansController extends Controller
      */
     public function destroy()
     {
-        IterasiCluster::query()->delete();
+        $user = Auth::user();
+        IterasiCluster::where('user_id', $user->id)->delete();
 
         return back()->with('success', 'Clustering telah direset');
     }

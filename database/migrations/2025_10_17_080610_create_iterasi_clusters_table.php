@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('iterasi_clusters', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('wisata_id')->constrained('wisatas')->cascadeOnDelete();
             $table->foreignId('cluster_id')->constrained('clusters')->cascadeOnDelete(); // 1: populer dan ramai, 2: potensial, 3: kurang diminati
             $table->float('jarak_c1');

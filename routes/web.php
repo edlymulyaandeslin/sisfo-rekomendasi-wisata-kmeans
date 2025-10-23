@@ -27,12 +27,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ]);
     })->name('dashboard');
 
-    Route::resource('users', UserController::class);
-    Route::resource('wisatas', WisataController::class);
-    Route::resource('clusters', ClusterController::class);
     Route::get('kmeans', [KmeansController::class, 'index'])->name('kmeans.index');
     Route::post('kmeans', [KmeansController::class, 'store'])->name('kmeans.store');
     Route::delete('kmeans', [KmeansController::class, 'destroy'])->name('kmeans.destroy');
+});
+
+Route::middleware('is_admin')->group(function () {
+    Route::resource('wisatas', WisataController::class);
+    Route::resource('clusters', ClusterController::class);
+    Route::resource('users', UserController::class);
 });
 
 require __DIR__ . '/settings.php';

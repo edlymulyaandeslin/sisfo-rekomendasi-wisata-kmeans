@@ -33,30 +33,32 @@ export default function Register() {
     return (
         <>
             <Head title="Daftar Akun Baru" />
-            <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-6 py-12">
-                <div className="w-full max-w-md rounded-3xl bg-white/80 p-8 shadow-lg ring-1 ring-gray-100 backdrop-blur-sm transition-all hover:shadow-xl">
+            <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-6 py-12 transition-colors duration-300 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+                <div className="w-full max-w-md rounded-3xl bg-white/80 p-8 shadow-lg ring-1 ring-gray-100 backdrop-blur-sm transition-all hover:shadow-xl dark:bg-gray-900/70 dark:shadow-none dark:ring-gray-800">
                     {/* Header */}
                     <div className="mb-8 text-center">
-                        <h1 className="text-3xl font-bold text-gray-900">Buat Akun Baru 🚀</h1>
-                        <p className="mt-2 text-sm text-gray-600">Daftar sekarang dan dapatkan rekomendasi wisata sesuai minat Anda.</p>
+                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Buat Akun Baru 🚀</h1>
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                            Daftar sekarang dan dapatkan rekomendasi wisata sesuai minat Anda.
+                        </p>
                     </div>
 
                     {/* Register Form */}
                     <form className="flex flex-col gap-6" onSubmit={submit}>
                         {/* Name */}
                         <div className="grid gap-2">
-                            <Label htmlFor="name" className="text-gray-800">
+                            <Label htmlFor="name" className="text-gray-800 dark:text-gray-200">
                                 Nama Lengkap
                             </Label>
                             <div className="relative">
-                                <User className="absolute top-3.5 left-3 h-4 w-4 text-gray-400" />
+                                <User className="absolute top-3.5 left-3 h-4 w-4 text-gray-400 dark:text-gray-500" />
                                 <Input
                                     id="name"
                                     type="text"
                                     required
                                     autoFocus
                                     autoComplete="name"
-                                    className="pl-10"
+                                    className="pl-10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                                     value={data.name}
                                     onChange={(e) => setData('name', e.target.value)}
                                     disabled={processing}
@@ -68,17 +70,17 @@ export default function Register() {
 
                         {/* Email */}
                         <div className="grid gap-2">
-                            <Label htmlFor="email" className="text-gray-800">
+                            <Label htmlFor="email" className="text-gray-800 dark:text-gray-200">
                                 Email
                             </Label>
                             <div className="relative">
-                                <Mail className="absolute top-3.5 left-3 h-4 w-4 text-gray-400" />
+                                <Mail className="absolute top-3.5 left-3 h-4 w-4 text-gray-400 dark:text-gray-500" />
                                 <Input
                                     id="email"
                                     type="email"
                                     required
                                     autoComplete="email"
-                                    className="pl-10"
+                                    className="pl-10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                                     value={data.email}
                                     onChange={(e) => setData('email', e.target.value)}
                                     disabled={processing}
@@ -90,17 +92,17 @@ export default function Register() {
 
                         {/* Password */}
                         <div className="grid gap-2">
-                            <Label htmlFor="password" className="text-gray-800">
+                            <Label htmlFor="password" className="text-gray-800 dark:text-gray-200">
                                 Password
                             </Label>
                             <div className="relative">
-                                <LockKeyhole className="absolute top-3.5 left-3 h-4 w-4 text-gray-400" />
+                                <LockKeyhole className="absolute top-3.5 left-3 h-4 w-4 text-gray-400 dark:text-gray-500" />
                                 <Input
                                     id="password"
                                     type="password"
                                     required
                                     autoComplete="new-password"
-                                    className="pl-10"
+                                    className="pl-10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                                     value={data.password}
                                     onChange={(e) => setData('password', e.target.value)}
                                     disabled={processing}
@@ -112,17 +114,17 @@ export default function Register() {
 
                         {/* Password Confirmation */}
                         <div className="grid gap-2">
-                            <Label htmlFor="password_confirmation" className="text-gray-800">
+                            <Label htmlFor="password_confirmation" className="text-gray-800 dark:text-gray-200">
                                 Konfirmasi Password
                             </Label>
                             <div className="relative">
-                                <LockKeyhole className="absolute top-3.5 left-3 h-4 w-4 text-gray-400" />
+                                <LockKeyhole className="absolute top-3.5 left-3 h-4 w-4 text-gray-400 dark:text-gray-500" />
                                 <Input
                                     id="password_confirmation"
                                     type="password"
                                     required
                                     autoComplete="new-password"
-                                    className="pl-10"
+                                    className="pl-10 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                                     value={data.password_confirmation}
                                     onChange={(e) => setData('password_confirmation', e.target.value)}
                                     disabled={processing}
@@ -135,7 +137,7 @@ export default function Register() {
                         {/* Submit Button */}
                         <Button
                             type="submit"
-                            className="mt-4 w-full rounded-xl bg-blue-600 py-2.5 text-white transition-all hover:bg-blue-700"
+                            className="mt-4 w-full rounded-xl bg-blue-600 py-2.5 text-white transition-all hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
                             disabled={processing}
                         >
                             {processing ? (
@@ -149,9 +151,9 @@ export default function Register() {
                         </Button>
 
                         {/* Link to Login */}
-                        <p className="mt-4 text-center text-sm text-gray-600">
+                        <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
                             Sudah punya akun?{' '}
-                            <TextLink href={route('login')} className="font-medium text-blue-600 hover:underline">
+                            <TextLink href={route('login')} className="font-medium text-blue-600 hover:underline dark:text-blue-400">
                                 Masuk di sini
                             </TextLink>
                         </p>

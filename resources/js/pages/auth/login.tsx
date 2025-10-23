@@ -37,33 +37,39 @@ export default function Login({ status, canResetPassword }: LoginProps) {
     return (
         <>
             <Head title="Masuk ke Akun" />
-            <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-6 py-12">
-                <div className="w-full max-w-md rounded-3xl bg-white/80 p-8 shadow-lg ring-1 ring-gray-100 backdrop-blur-sm transition-all hover:shadow-xl">
+            <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-6 py-12 transition-colors duration-300 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
+                <div className="w-full max-w-md rounded-3xl bg-white/80 p-8 shadow-lg ring-1 ring-gray-100 backdrop-blur-sm transition-all hover:shadow-xl dark:bg-gray-900/80 dark:ring-gray-800 dark:hover:shadow-blue-900/30">
                     {/* Header */}
                     <div className="mb-8 text-center">
-                        <h1 className="text-3xl font-bold text-gray-900">Selamat Datang 👋</h1>
-                        <p className="mt-2 text-sm text-gray-600">Masuk ke akun Anda untuk mendapatkan rekomendasi wisata sesuai minat Anda.</p>
+                        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Selamat Datang 👋</h1>
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                            Masuk ke akun Anda untuk mendapatkan rekomendasi wisata sesuai minat Anda.
+                        </p>
                     </div>
 
                     {/* Status message */}
-                    {status && <div className="mb-4 rounded-lg bg-green-50 py-2 text-center text-sm font-medium text-green-700">{status}</div>}
+                    {status && (
+                        <div className="mb-4 rounded-lg bg-green-50 py-2 text-center text-sm font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                            {status}
+                        </div>
+                    )}
 
                     {/* Login Form */}
                     <form className="flex flex-col gap-6" onSubmit={submit}>
                         {/* Email */}
                         <div className="grid gap-2">
-                            <Label htmlFor="email" className="text-gray-800">
+                            <Label htmlFor="email" className="text-gray-800 dark:text-gray-200">
                                 Email
                             </Label>
                             <div className="relative">
-                                <Mail className="absolute top-3.5 left-3 h-4 w-4 text-gray-400" />
+                                <Mail className="absolute top-3.5 left-3 h-4 w-4 text-gray-400 dark:text-gray-500" />
                                 <Input
                                     id="email"
                                     type="email"
                                     required
                                     autoFocus
                                     autoComplete="email"
-                                    className="pl-10"
+                                    className="border-gray-300 bg-white/90 pl-10 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                                     value={data.email}
                                     onChange={(e) => setData('email', e.target.value)}
                                     placeholder="nama@contoh.com"
@@ -75,23 +81,23 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                         {/* Password */}
                         <div className="grid gap-2">
                             <div className="flex items-center justify-between">
-                                <Label htmlFor="password" className="text-gray-800">
+                                <Label htmlFor="password" className="text-gray-800 dark:text-gray-200">
                                     Password
                                 </Label>
                                 {canResetPassword && (
-                                    <TextLink href={route('password.request')} className="text-sm text-blue-600 hover:underline">
+                                    <TextLink href={route('password.request')} className="text-sm text-blue-600 hover:underline dark:text-blue-400">
                                         Lupa password?
                                     </TextLink>
                                 )}
                             </div>
                             <div className="relative">
-                                <LockKeyhole className="absolute top-3.5 left-3 h-4 w-4 text-gray-400" />
+                                <LockKeyhole className="absolute top-3.5 left-3 h-4 w-4 text-gray-400 dark:text-gray-500" />
                                 <Input
                                     id="password"
                                     type="password"
                                     required
                                     autoComplete="current-password"
-                                    className="pl-10"
+                                    className="border-gray-300 bg-white/90 pl-10 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                                     value={data.password}
                                     onChange={(e) => setData('password', e.target.value)}
                                     placeholder="••••••••"
@@ -103,7 +109,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                         {/* Remember Me */}
                         <div className="flex items-center space-x-3">
                             <Checkbox id="remember" name="remember" checked={data.remember} onClick={() => setData('remember', !data.remember)} />
-                            <Label htmlFor="remember" className="text-gray-700">
+                            <Label htmlFor="remember" className="text-gray-700 dark:text-gray-300">
                                 Ingat saya
                             </Label>
                         </div>
@@ -111,7 +117,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                         {/* Submit Button */}
                         <Button
                             type="submit"
-                            className="mt-4 w-full rounded-xl bg-blue-600 py-2.5 text-white transition-all hover:bg-blue-700"
+                            className="mt-4 w-full rounded-xl bg-blue-600 py-2.5 text-white transition-all hover:bg-blue-700 dark:hover:bg-blue-500"
                             disabled={processing}
                         >
                             {processing ? (
@@ -125,9 +131,9 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                         </Button>
 
                         {/* Register Link */}
-                        <p className="mt-4 text-center text-sm text-gray-600">
+                        <p className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
                             Belum punya akun?{' '}
-                            <TextLink href={route('register')} className="font-medium text-blue-600 hover:underline">
+                            <TextLink href={route('register')} className="font-medium text-blue-600 hover:underline dark:text-blue-400">
                                 Daftar Sekarang
                             </TextLink>
                         </p>
