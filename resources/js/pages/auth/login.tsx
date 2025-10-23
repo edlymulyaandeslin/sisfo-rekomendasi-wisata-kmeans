@@ -42,7 +42,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                     {/* Header */}
                     <div className="mb-8 text-center">
                         <h1 className="text-3xl font-bold text-gray-900">Selamat Datang 👋</h1>
-                        <p className="mt-2 text-sm text-gray-600">Masuk ke akun Anda untuk mengelola data dan analisis wisata.</p>
+                        <p className="mt-2 text-sm text-gray-600">Masuk ke akun Anda untuk mendapatkan rekomendasi wisata sesuai minat Anda.</p>
                     </div>
 
                     {/* Status message */}
@@ -123,6 +123,14 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                                 'Masuk Sekarang'
                             )}
                         </Button>
+
+                        {/* Register Link */}
+                        <p className="mt-4 text-center text-sm text-gray-600">
+                            Belum punya akun?{' '}
+                            <TextLink href={route('register')} className="font-medium text-blue-600 hover:underline">
+                                Daftar Sekarang
+                            </TextLink>
+                        </p>
                     </form>
                 </div>
             </div>
