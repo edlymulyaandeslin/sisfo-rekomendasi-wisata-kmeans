@@ -69,7 +69,7 @@ export interface Wisata {
     id: number;
     nama_wisata: string;
     rating: number;
-    ulasan: number;
+    jumlah_pengunjung: number;
     jumlah_fasilitas: number;
     created_at: string;
     updated_at: string;

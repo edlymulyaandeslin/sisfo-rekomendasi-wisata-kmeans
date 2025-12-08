@@ -15,7 +15,7 @@ export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
         nama_wisata: '',
         rating: '',
-        ulasan: '',
+        jumlah_pengunjung: '',
         jumlah_fasilitas: '',
     });
 
@@ -60,20 +60,18 @@ export default function Create() {
                         />
                         {errors.rating && <p className="mt-1 text-sm text-red-500">{errors.rating}</p>}
                     </div>
-
-                    {/* ulasan */}
+                    {/* jumlah_pengunjung */}
                     <div>
-                        <Label htmlFor="ulasan">Ulasan</Label>
+                        <Label htmlFor="jumlah_pengunjung">Jumlah Pengunjung</Label>
                         <Input
-                            id="ulasan"
+                            id="jumlah_pengunjung"
                             type="number"
-                            value={data.ulasan}
-                            onChange={(e) => setData('ulasan', e.target.value)}
+                            value={data.jumlah_pengunjung}
+                            onChange={(e) => setData('jumlah_pengunjung', e.target.value)}
                             placeholder="Ex: 1020"
                         />
-                        {errors.ulasan && <p className="mt-1 text-sm text-red-500">{errors.ulasan}</p>}
+                        {errors.jumlah_pengunjung && <p className="mt-1 text-sm text-red-500">{errors.jumlah_pengunjung}</p>}
                     </div>
-
                     {/* jumlah_fasilitas */}
                     <div>
                         <Label htmlFor="jumlah_fasilitas">Jumlah Fasilitas</Label>

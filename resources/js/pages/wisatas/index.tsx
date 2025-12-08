@@ -97,8 +97,8 @@ export default function Index({ wisatas }: { wisatas: PaginatedData<Wisata> }) {
                             ),
                         },
                         {
-                            title: 'Ulasan',
-                            render: (wisata) => <span className="text-sm font-medium">{wisata.ulasan}</span>,
+                            title: 'Jumlah Pengunjung',
+                            render: (wisata) => <span className="text-sm font-medium">{wisata.jumlah_pengunjung}</span>,
                         },
                         {
                             title: 'Jumlah Fasilitas',
@@ -157,8 +157,8 @@ export default function Index({ wisatas }: { wisatas: PaginatedData<Wisata> }) {
                                 </span>
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-xs text-gray-500 dark:text-gray-400">Ulasan</span>
-                                <span className="text-base font-semibold">{selectedWisata.ulasan}</span>
+                                <span className="text-xs text-gray-500 dark:text-gray-400">Jumlah Pengunjung</span>
+                                <span className="text-base font-semibold">{selectedWisata.jumlah_pengunjung}</span>
                             </div>
                             <div className="flex flex-col">
                                 <span className="text-xs text-gray-500 dark:text-gray-400">Jumlah Fasilitas</span>

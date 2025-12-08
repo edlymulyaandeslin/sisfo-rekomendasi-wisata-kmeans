@@ -15,7 +15,7 @@ export default function Edit({ wisata }: { wisata: Wisata }) {
     const { data, setData, processing, put, errors } = useForm({
         nama_wisata: wisata.nama_wisata || '',
         rating: Number(wisata.rating).toFixed(1) || '',
-        ulasan: wisata.ulasan || 0,
+        jumlah_pengunjung: wisata.jumlah_pengunjung || 0,
         jumlah_fasilitas: wisata.jumlah_fasilitas || 0,
     });
 
@@ -62,17 +62,17 @@ export default function Edit({ wisata }: { wisata: Wisata }) {
                         {errors.rating && <p className="mt-1 text-sm text-red-500">{errors.rating}</p>}
                     </div>
 
-                    {/* ulasan */}
+                    {/* jumlah_pengunjung */}
                     <div>
-                        <Label htmlFor="ulasan">Ulasan</Label>
+                        <Label htmlFor="jumlah_pengunjung">Jumlah Pengunjung</Label>
                         <Input
-                            id="ulasan"
+                            id="jumlah_pengunjung"
                             type="number"
-                            value={data.ulasan}
-                            onChange={(e) => setData('ulasan', Number(e.target.value))}
+                            value={data.jumlah_pengunjung}
+                            onChange={(e) => setData('jumlah_pengunjung', Number(e.target.value))}
                             placeholder="Ex: 1020"
                         />
-                        {errors.ulasan && <p className="mt-1 text-sm text-red-500">{errors.ulasan}</p>}
+                        {errors.jumlah_pengunjung && <p className="mt-1 text-sm text-red-500">{errors.jumlah_pengunjung}</p>}
                     </div>
 
                     {/* jumlah_fasilitas */}

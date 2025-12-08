@@ -1,9 +1,8 @@
+import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import type { BreadcrumbItem, Cluster, IterasiCluster } from '@/types';
 import { Head, router, useForm } from '@inertiajs/react';
-
-import { Button } from '@/components/ui/button';
-import { Aperture } from 'lucide-react';
+import { Aperture, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [{ title: 'K-means', href: '/kmeans' }];
@@ -141,7 +140,7 @@ export default function Index({ clusters, clustering_data }: { clusters: Cluster
                                                     <th className="px-6 py-3">No</th>
                                                     <th className="px-6 py-3">Nama Wisata</th>
                                                     <th className="px-6 py-3">Rating</th>
-                                                    <th className="px-6 py-3">Ulasan</th>
+                                                    <th className="px-6 py-3">Jumlah Pengunjung</th>
                                                     <th className="px-6 py-3">Jumlah Fasilitas</th>
                                                     <th className="px-6 py-3 text-center">Cluster ID</th>
                                                 </tr>
@@ -157,8 +156,15 @@ export default function Index({ clusters, clustering_data }: { clusters: Cluster
                                                             <td className="px-6 py-3 font-medium text-gray-900 dark:text-gray-100">
                                                                 {data.wisata.nama_wisata}
                                                             </td>
-                                                            <td className="px-6 py-3">{data.wisata.rating}</td>
-                                                            <td className="px-6 py-3">{data.wisata.ulasan}</td>
+
+                                                            <td className="px-6 py-3">
+                                                                <span className="flex gap-1">
+                                                                    <Star className="text-yellow-400" fill="currentColor" size={20} />
+                                                                    {Number(data.wisata.rating).toFixed(1)}
+                                                                </span>
+                                                            </td>
+                                                            <td className="px-6 py-3">{data.wisata.jumlah_pengunjung}</td>
+
                                                             <td className="px-6 py-3">{data.wisata.jumlah_fasilitas}</td>
                                                             <td className="px-6 py-3 text-center font-semibold">{data.cluster_id}</td>
                                                         </tr>

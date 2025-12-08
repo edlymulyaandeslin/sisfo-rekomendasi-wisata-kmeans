@@ -42,7 +42,7 @@ class KmeansController extends Controller
             $temp_data['jarak_c' . ($index + 1)] = round(
                 sqrt(
                     ($wisata->rating - $ce['rating']) ** 2 +
-                        ($wisata->ulasan - $ce['ulasan']) ** 2 +
+                        ($wisata->jumlah_pengunjung - $ce['jumlah_pengunjung']) ** 2 +
                         ($wisata->jumlah_fasilitas - $ce['jumlah_fasilitas']) ** 2
                 ),
                 2
@@ -77,19 +77,19 @@ class KmeansController extends Controller
         $new_centroid = [
             0 => [
                 'rating' => 0,
-                'ulasan' => 0,
+                'jumlah_pengunjung' => 0,
                 'jumlah_fasilitas' => 0,
                 'count' => 0, // jumlah data di cluster 1
             ],
             1 => [
                 'rating' => 0,
-                'ulasan' => 0,
+                'jumlah_pengunjung' => 0,
                 'jumlah_fasilitas' => 0,
                 'count' => 0, // jumlah data di cluster 2
             ],
             2 => [
                 'rating' => 0,
-                'ulasan' => 0,
+                'jumlah_pengunjung' => 0,
                 'jumlah_fasilitas' => 0,
                 'count' => 0, // jumlah data di cluster 3
             ],
@@ -105,7 +105,7 @@ class KmeansController extends Controller
 
             // Tambahkan nilai ke total clusterIndex terkait
             $new_centroid[$clusterIndex]['rating'] += $wisata->rating;
-            $new_centroid[$clusterIndex]['ulasan'] += $wisata->ulasan;
+            $new_centroid[$clusterIndex]['jumlah_pengunjung'] += $wisata->jumlah_pengunjung;
             $new_centroid[$clusterIndex]['jumlah_fasilitas'] += $wisata->jumlah_fasilitas;
             $new_centroid[$clusterIndex]['count']++;
         }
@@ -115,7 +115,7 @@ class KmeansController extends Controller
             $count = max($val['count'], 1); // Hindari pembagian dengan 0
 
             $new_centroid[$key]['rating'] = round($val['rating'] / $count, 2);
-            $new_centroid[$key]['ulasan'] = round($val['ulasan'] / $count, 2);
+            $new_centroid[$key]['jumlah_pengunjung'] = round($val['jumlah_pengunjung'] / $count, 2);
             $new_centroid[$key]['jumlah_fasilitas'] = round($val['jumlah_fasilitas'] / $count, 2);
 
             // Hapus 'count' agar hasil lebih bersih
@@ -128,7 +128,7 @@ class KmeansController extends Controller
     private function isSameCentroid(array $old, array $new): bool
     {
         foreach ($old as $index => $centroid) {
-            foreach (['rating', 'ulasan', 'jumlah_fasilitas'] as $key) {
+            foreach (['rating', 'jumlah_pengunjung', 'jumlah_fasilitas'] as $key) {
                 // Jika selisih lebih dari 0.0001 dianggap belum konvergen
                 if (abs($centroid[$key] - $new[$index][$key]) > 0.0001) {
                     return false;

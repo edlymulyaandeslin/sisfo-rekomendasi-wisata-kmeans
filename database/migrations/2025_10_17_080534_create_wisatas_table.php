@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_wisata');
             $table->decimal('rating');
-            $table->integer('ulasan');
+            $table->integer('jumlah_pengunjung');
             $table->integer('jumlah_fasilitas');
             $table->timestamps();
         });
