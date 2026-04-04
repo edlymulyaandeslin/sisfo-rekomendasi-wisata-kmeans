@@ -67,6 +67,7 @@ export type PaginatedData<T> = {
 
 export interface Wisata {
     id: number;
+    location: string;
     nama_wisata: string;
     rating: number;
     jumlah_pengunjung: number;

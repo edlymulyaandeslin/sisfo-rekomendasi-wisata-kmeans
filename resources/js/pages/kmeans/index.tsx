@@ -127,17 +127,18 @@ export default function Index({ clusters, clustering_data }: { clusters: Cluster
                             ].map((cluster, i) => (
                                 <div
                                     key={i}
-                                    className={`rounded-2xl border-2 ${cluster.border} ${cluster.bg} shadow-sm transition-all duration-300 hover:shadow-xl`}
+                                    className={`overflow-x-auto rounded-2xl  border-2 ${cluster.border} ${cluster.bg} shadow-sm transition-all duration-300 hover:shadow-xl`}
                                 >
                                     <div className="border-b border-gray-200 bg-white/70 px-6 py-4 backdrop-blur dark:border-gray-800 dark:bg-gray-900/50">
                                         <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{cluster.title}</h3>
                                     </div>
 
-                                    <div className="overflow-x-auto">
+                                    <div className="h-80 overflow-y-auto">
                                         <table className="min-w-full text-left text-sm">
                                             <thead className="bg-gray-100 text-xs font-semibold text-gray-700 uppercase dark:bg-gray-800 dark:text-gray-300">
                                                 <tr>
                                                     <th className="px-6 py-3">No</th>
+                                                    <th className="px-6 py-3">Lokasi</th>
                                                     <th className="px-6 py-3">Nama Wisata</th>
                                                     <th className="px-6 py-3">Rating</th>
                                                     <th className="px-6 py-3">Jumlah Pengunjung</th>
@@ -153,10 +154,12 @@ export default function Index({ clusters, clustering_data }: { clusters: Cluster
                                                             className="border-b border-gray-200 transition-colors hover:bg-white/70 dark:border-gray-800 dark:hover:bg-gray-800/70"
                                                         >
                                                             <td className="px-6 py-3">{index + 1}</td>
+                                                            <td className="px-6 py-3 font-medium text-gray-900 dark:text-gray-100 capitalize">
+                                                                {data.wisata.location}
+                                                            </td>
                                                             <td className="px-6 py-3 font-medium text-gray-900 dark:text-gray-100">
                                                                 {data.wisata.nama_wisata}
                                                             </td>
-
                                                             <td className="px-6 py-3">
                                                                 <span className="flex gap-1">
                                                                     <Star className="text-yellow-400" fill="currentColor" size={20} />
@@ -164,7 +167,6 @@ export default function Index({ clusters, clustering_data }: { clusters: Cluster
                                                                 </span>
                                                             </td>
                                                             <td className="px-6 py-3">{data.wisata.jumlah_pengunjung}</td>
-
                                                             <td className="px-6 py-3">{data.wisata.jumlah_fasilitas}</td>
                                                             <td className="px-6 py-3 text-center font-semibold">{data.cluster_id}</td>
                                                         </tr>
