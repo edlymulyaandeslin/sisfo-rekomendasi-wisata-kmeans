@@ -42,6 +42,7 @@ class WisataController extends Controller
     {
         $validate_data = $request->validate([
             "nama_wisata" => "required",
+            "location" => "required",
             "rating" => "required|numeric",
             "jumlah_pengunjung" => "required|numeric",
             "jumlah_fasilitas" => "required|numeric",
@@ -81,6 +82,7 @@ class WisataController extends Controller
 
         $rules = [
             "nama_wisata" => "required",
+            "location" => "required",
             "rating" => "required|numeric",
             "jumlah_pengunjung" => "required|numeric",
             "jumlah_fasilitas" => "required|numeric",

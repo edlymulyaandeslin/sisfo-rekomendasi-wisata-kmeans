@@ -14,6 +14,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 export default function Edit({ wisata }: { wisata: Wisata }) {
     const { data, setData, processing, put, errors } = useForm({
         nama_wisata: wisata.nama_wisata || '',
+        location: wisata.location || '',
         rating: Number(wisata.rating).toFixed(1) || '',
         jumlah_pengunjung: wisata.jumlah_pengunjung || 0,
         jumlah_fasilitas: wisata.jumlah_fasilitas || 0,
@@ -46,6 +47,18 @@ export default function Edit({ wisata }: { wisata: Wisata }) {
                             placeholder="Nama Wisata"
                         />
                         {errors.nama_wisata && <p className="mt-1 text-sm text-red-500">{errors.nama_wisata}</p>}
+                    </div>
+
+                    {/* location */}
+                    <div>
+                        <Label htmlFor="location">Lokasi <small className='text-gray-500 italic'>(Provinsi)</small></Label>
+                        <Input
+                            id="location"
+                            value={data.location}
+                            onChange={(e) => setData('location', e.target.value)}
+                            placeholder="Lokasi Wisata"
+                        />
+                        {errors.location && <p className="mt-1 text-sm text-red-500">{errors.location}</p>}
                     </div>
 
                     {/* rating */}

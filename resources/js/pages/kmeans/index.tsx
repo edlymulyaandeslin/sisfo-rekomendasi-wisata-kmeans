@@ -153,8 +153,8 @@ export default function Index({ clusters, clustering_data }: { clusters: Cluster
                                                             key={index}
                                                             className="border-b border-gray-200 transition-colors hover:bg-white/70 dark:border-gray-800 dark:hover:bg-gray-800/70"
                                                         >
-                                                            <td className="px-6 py-3">{index + 1}</td>
-                                                            <td className="px-6 py-3 font-medium text-gray-900 dark:text-gray-100 capitalize">
+                                                                <td className="px-6 py-3">{index + 1}</td>
+                                                            <td className="px-6 py-3 font-medium text-gray-900  dark:text-gray-100 capitalize">
                                                                 {data.wisata.location}
                                                             </td>
                                                             <td className="px-6 py-3 font-medium text-gray-900 dark:text-gray-100">
