@@ -84,6 +84,10 @@ export default function Index({ wisatas }: { wisatas: PaginatedData<Wisata> }) {
                             render: (_, index) => <span className="text-sm">{index}</span>,
                         },
                         {
+                            title: 'Lokasi',
+                            render: (wisata) => <span className="text-sm font-medium capitalize">{wisata.location}</span>,
+                        },
+                        {
                             title: 'Nama Wisata',
                             render: (wisata) => <span className="text-sm font-medium">{wisata.nama_wisata}</span>,
                         },
