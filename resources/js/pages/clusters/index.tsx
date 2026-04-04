@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
 import { PaginatedData, type BreadcrumbItem, type Cluster } from '@/types';
 import { formatDateToHumanReadable } from '@/utils';
-import { Head, Link, router, usePage } from '@inertiajs/react';
+import { Head, router, usePage } from '@inertiajs/react';
 import { useEffect, useState } from 'react';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -55,12 +55,12 @@ export default function Index({ clusters }: { clusters: PaginatedData<Cluster> }
             <div className="flex flex-col gap-6 p-4">
                 <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                     <h2 className="text-2xl font-bold tracking-tight">Data Cluster</h2>
-                    <Link
+                    {/* <Link
                         href="/clusters/create"
                         className="inline-flex h-9 items-center rounded-md bg-blue-600 px-4 text-sm font-medium text-white shadow transition-colors hover:bg-blue-700"
                     >
                         + Tambah Cluster
-                    </Link>
+                    </Link> */}
                 </div>
 
                 <input
@@ -100,13 +100,13 @@ export default function Index({ clusters }: { clusters: PaginatedData<Cluster> }
                                     >
                                         Lihat
                                     </button>
-                                    <Link
+                                    {/* <Link
                                         href={`/clusters/${cluster.id}/edit`}
                                         className="inline-flex items-center rounded-md bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-700 hover:bg-yellow-200 dark:bg-yellow-900 dark:text-yellow-300 dark:hover:bg-yellow-800"
                                     >
                                         Edit
-                                    </Link>
-                                    <button
+                                    </Link> */}
+                                    {/* <button
                                         onClick={() => {
                                             setSelectedCluster(cluster);
                                             setOpenDeleteModal(true);
@@ -114,7 +114,7 @@ export default function Index({ clusters }: { clusters: PaginatedData<Cluster> }
                                         className="inline-flex cursor-pointer items-center rounded-md bg-red-100 px-3 py-1 text-xs font-medium text-red-700 hover:bg-red-200 dark:bg-red-900 dark:text-red-300 dark:hover:bg-red-800"
                                     >
                                         Hapus
-                                    </button>
+                                    </button> */}
                                 </div>
                             ),
                         },

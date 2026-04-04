@@ -34,7 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::middleware('is_admin')->group(function () {
     Route::resource('wisatas', WisataController::class);
-    Route::resource('clusters', ClusterController::class);
+    Route::resource('clusters', ClusterController::class)->except(['create', 'edit', 'destroy']);
     Route::resource('users', UserController::class);
 });
 
